@@ -1,0 +1,58 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+.Python
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.mo
+*.pyo
+__pycache__/
+local_settings.py
+db.sqlite3
+
+# MacOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# SqLite
+*.sqlite3
+
+# Migrations
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Media
+media/
+
+# Static files
+staticfiles/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+
+# Test reports
+.junit/
+
+# Security
+secrets.json
