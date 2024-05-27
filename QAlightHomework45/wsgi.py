@@ -1,5 +1,5 @@
 """
-WSGI config for QAlightHomework45 project.
+WSGI QAlightHomework45 for QAlightHomework45 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

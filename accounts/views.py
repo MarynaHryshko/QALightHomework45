@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
@@ -9,10 +9,10 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.generic import FormView, CreateView, DeleteView, DetailView, ListView
 
 from accounts.forms import LoginForm, RegisterForm
-from config import settings
+from QAlightHomework45 import settings
 
 
-#@login_required
+@login_required
 def home_view(request: HttpRequest) -> HttpResponse:
     return render(request, "home.html")
 
@@ -30,7 +30,8 @@ class RegisterView(FormView):
 
     def form_valid(self, form):
         user = form.save(commit=False)
-        user.is_active = False
+#        user.is_active = False
+        user.is_active = True # Make False for activation by email
         user.save()
 
         messages.info(
@@ -81,3 +82,8 @@ def login_view(request):
 
     form = LoginForm()
     return render(request, "accounts/login.html", {"form": form})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:home')
