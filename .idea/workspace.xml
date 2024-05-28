@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="396f116e-254c-4451-952f-755b587d8fcd" name="Changes" comment="Homework 45. Added new project and main page.">
-      <change afterPath="$PROJECT_DIR$/templates/base/nav/header.html" afterDir="false" />
+    <list default="true" id="396f116e-254c-4451-952f-755b587d8fcd" name="Changes" comment="Homework 46. User registration, login and logout + styles">
+      <change afterPath="$PROJECT_DIR$/accounts/google_mail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/services.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/accounts/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base/emails/registration_email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QAlightHomework45/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/QAlightHomework45/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QAlightHomework45/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/QAlightHomework45/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wsgi.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/nav/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/nav/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -61,6 +60,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Django Server.QAlightHomework45.executor&quot;: &quot;Run&quot;,
     &quot;Python.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;Python.trace_find.executor&quot;: &quot;Run&quot;,
@@ -69,8 +69,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;5586047a&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/marynahryshko/Desktop/QALightHomework/QAlightHomework45/templates/base&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;08c300b7&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/marynahryshko/Desktop/QALightHomework/QAlightHomework45/accounts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,11 +87,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/base" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/accounts" />
+      <recent name="$PROJECT_DIR$/templates/base" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/accounts/migrations" />
-      <recent name="$PROJECT_DIR$/templates/accounts" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.QAlightHomework45">
@@ -168,9 +168,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django Server.QAlightHomework45" />
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.trace_find" />
-      <item itemvalue="Django Server.QAlightHomework45" />
     </list>
     <recent_temporary>
       <list>
@@ -200,7 +200,21 @@
       <workItem from="1716665626863" duration="175000" />
       <workItem from="1716735213559" duration="3703000" />
       <workItem from="1716797066679" duration="4265000" />
+      <workItem from="1716805239007" duration="8821000" />
+      <workItem from="1716920099301" duration="1163000" />
+      <workItem from="1716926546679" duration="254000" />
+      <workItem from="1716926819507" duration="17000" />
+      <workItem from="1716927057715" duration="630000" />
     </task>
+    <task id="LOCAL-00001" summary="Homework 46. User registration, login and logout + styles">
+      <option name="closed" value="true" />
+      <created>1716805387177</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716805387177</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +234,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Homework 46. Added user login and registration page" />
     <MESSAGE value="Homework 46. Added user login and registration page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Homework 46. Added user login and registration page" />
+    <MESSAGE value="Homework 46. User registration, login and logout + styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Homework 46. User registration, login and logout + styles" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QAlightHomework45$trace_find.coverage" NAME="trace_find Coverage Results" MODIFIED="1716798166921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
