@@ -3,7 +3,7 @@ import threading
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from accounts.credentials import google_account, google_password
+#from accounts.credentials import google_account, google_password
 from accounts.google_mail import EmailByGoogle
 
 
@@ -29,5 +29,9 @@ class AccountsEmailNotification:
         message = render_to_string("base/emails/registration_email.html", context)
         self._send_email_in_thread(subject, message, from_email, recipient_list)
 
-        gmail_object = EmailByGoogle(google_account, google_password)
-        gmail_object.send_in_thread(subject, message, recipient_list[0])
+        # Add values to google_account and google_password variables
+        # Google password - application password, created by google https://support.google.com/accounts/answer/185833?hl=en
+        # google_account = ""
+        # google_password = ""
+        # gmail_object = EmailByGoogle(google_account, google_password)
+        # gmail_object.send_in_thread(subject, message, recipient_list[0])
