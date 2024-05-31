@@ -17,10 +17,19 @@
       </form>
       <div class="col-md-3 text-end">
           {% if request.user.is_authenticated %}
-          <span><b>{{ request.user.get_full_name }}({{ request.user.username }})</b></span>
-          <a class="text-decoration-none" href="{% url 'accounts:logout' %}">
+            <span><b>{{ request.user.get_full_name }}({{ request.user.username }})</b></span>
+            {% if request.user.profile %}
+                <a href="{% url 'accounts:profile' %}">
+                    <img src="{{ request.user.profile.avatar.url }}"
+                        alt="{{ request.user.username }}'s avatar"
+                        width="25"
+                        height="25">
+                </a>
+
+            {% endif %}    
+            <a class="text-decoration-none" href="{% url 'accounts:logout' %}">
             <button type="button" class="btn btn-outline-primary me-2">Logout</button>
-          </a>
+            </a>
           {% else %}
             <a href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary me-2">Login</button></a><a href="{% url 'accounts:register' %}"><button type="button" class="btn btn-primary">Sign-up</button></a>    
           {% endif %}

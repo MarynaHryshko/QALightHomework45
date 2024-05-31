@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.crypto import get_random_string
 
 from accounts.managers import CustomUserManager
-from accounts.validators import validate_username, validate_name
+from accounts.validators import validate_username, validate_name, validate_birth_date
 
 
 class User(AbstractUser):
@@ -27,6 +27,25 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         self.first_name = self.first_name.capitalize()
         self.last_name = self.last_name.capitalize()
+        super().save(*args, **kwargs)
+
+
+class Profile(models.Model):
+    GENDER_CHOICES = (('m','Male'), ('f','Female'))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+    avatar = models.ImageField(upload_to='uploads/%Y/%m/%d/')
+    date_of_birth = models.DateField(validators=[validate_birth_date])
+    info = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.user.username}'s profile"
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            super().save(*args, **kwargs)
+        if not self.avatar:
+            self.avatar = create_avatar_url(self.user.email)
         super().save(*args, **kwargs)
 
 

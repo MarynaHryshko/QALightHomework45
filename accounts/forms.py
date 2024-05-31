@@ -2,8 +2,20 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
+from accounts.models import Profile
+
 User = get_user_model()
 
+class DateInputCustom(forms.DateInput):
+    input_type = 'date'
+    def __init__(self, attrs=None, options = None):
+        if attrs is None:
+            attrs = {}
+        if options is None:
+            options = {}
+        attrs.update({"class": "form-control mb-3", "data-date-format": "yyyy-mm-dd"})
+        attrs.update(options)
+        super().__init__(attrs)
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
@@ -59,3 +71,21 @@ class RegisterForm(UserCreationForm):
 
             if self.errors.get(field_name):
                 field.widget.attrs["class"] += " is-invalid"
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("gender", "date_of_birth", "avatar", "info")
+        labels = {"date_of_bitrh": "Date of your birth", "avatar": "Avatar Image"}
+        placeholders = {"info": "Enter some additional information",}
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update({
+                    "class": "form-control form-control lg",
+                    "placeholder": self.Meta.placeholders.get(field_name),})
+            if self.errors.get(field_name):
+                field.widget.attrs["class"] += " is-invalid"
+        self.fields["date_of_birth"].widget = DateInputCustom()
+        if self.errors.get("date_of_birth"):
+            self.fields["date_of_birth"].widget.attrs["class"] += " is-invalid"
